@@ -1,7 +1,17 @@
-import '../styles/globals.css'
+import Head from 'next/head';
+import '../styles/globals.css';
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+function App({ Component, pageProps }) {
+  return (
+    <>
+      <Head>
+        <title>MovieTalk</title>
+        <meta name="description" content="A social media based around movies." />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <Component {...pageProps} />
+    </>
+  );
 }
 
-export default MyApp
+export default App;
