@@ -10,9 +10,11 @@ export default function SignIn() {
   }
 
   return (
-    <div>
-      <h1>MovieTalk</h1>
-      <button onClick={signInWithGoogle}>Sign in with Google</button>
+    <div className={styles.container}>
+      <div className={styles.centerbox}>
+        <h1>MovieTalk</h1>
+        <button onClick={signInWithGoogle}>Sign in with Google</button>
+      </div>
     </div>
   );
 }

@@ -1,0 +1,17 @@
+.container {
+  overflow: auto;
+}
+
+.header {
+  background: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.movielist {
+  margin: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
