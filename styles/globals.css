@@ -18,3 +18,8 @@ a {
 button {
   cursor: pointer;
 }
+
+:root {
+  --blue0: #2196f3;
+  --blue1: #2176ff;
+}
