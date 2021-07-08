@@ -27,33 +27,41 @@ export default function SignIn() {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <LandingUI />
-      <h1>Sign In</h1>
+      <h1 className={styles.title}>Sign In</h1>
       <form onSubmit={e => {
         e.preventDefault();
         signIn();
       }}>
+        <label htmlFor="signin-email">Email</label>
         <input
+          id="signin-email"
           type="email"
           value={email}
           onChange={e => setEmail(e.target.value)}
           autoComplete="username"
           required
         />
+        <label htmlFor="signin-password">Password</label>
         <input
+          id="signin-password"
           type="password"
           value={password}
           onChange={e => setPassword(e.target.value)}
           autoComplete="current-password"
           required
         />
-        <button>Sign In</button>
+        <div className={styles.buttondiv}>
+          <button>Sign In</button>
+        </div>
       </form>
-      <p>{error}</p>
-      <Link href="/signup">
-        <a>No account? Sign up</a>
-      </Link>
+      <p className={styles.error}>{error}</p>
+      <div className={styles.otherpage}>
+        <Link href="/signup">
+          <a>No account? Sign up</a>
+        </Link>
+      </div>
     </div>
   );
 }
