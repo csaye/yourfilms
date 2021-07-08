@@ -13,16 +13,17 @@ export default function Home() {
         <Image
           height="48"
           width="48"
-          src="/img/logo.png"
-          alt="logo"
+          src="/img/logo2.png"
+          alt="logo2"
         />
       </div>
+      <p>A social media based around movies.</p>
       <div className={styles.links}>
         <Link href="/signin">
-          <a>Sign In</a>
+          <a>SIGN IN</a>
         </Link>
         <Link href="/signup">
-          <a>Sign Up</a>
+          <a>SIGN UP</a>
         </Link>
       </div>
     </div>

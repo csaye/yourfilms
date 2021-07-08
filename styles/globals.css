@@ -1,7 +1,6 @@
 * {
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 html, body, #__next {
@@ -13,6 +12,14 @@ html, body, #__next {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+a.styled {
+  color: var(--blue0);
+}
+
+a.styled:hover {
+  color: var(--blue1);
 }
 
 button {

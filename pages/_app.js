@@ -30,6 +30,8 @@ function App({ Component, pageProps }) {
         <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
         <link rel="manifest" href="/favicons/site.webmanifest" />
+        {/* styling */}
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet" />
       </Head>
       <div className={styles.background} />
       <Component {...pageProps} />
