@@ -11,6 +11,29 @@ export default function SignUp() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
+  async function signUp() {
+    setError('');
+    try {
+      await firebase.auth().createUserWithEmailAndPassword(email, password);
+    } catch (e) {
+      if (e.code === 'auth/invalid-email') {
+        setError('Invalid email address.');
+      } else if (e.code === 'auth/too-many-requests') {
+        setError('Too many requests. Please try again later.')
+      } else if (e.code === 'auth/weak-password') {
+        setError('Password must be at least 6 characters.')
+      } else {
+        setError(e.message);
+      }
+      return;
+    };
+    const uid = firebase.auth().currentUser.uid;
+    await firebase.firestore().collection('users-public').doc(uid).set({
+      name: name,
+      joined: new Date().getTime()
+    });
+  }
+
   return (
     <div>
       <h1>Sign Up</h1>
