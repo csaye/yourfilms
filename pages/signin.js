@@ -5,7 +5,7 @@ import LandingUI from '../components/LandingUI.js';
 import firebase from 'firebase/app';
 import getError from '../util/getError.js';
 
-import styles from '../styles/SignIn.module.css';
+import styles from '../styles/SignInUp.module.css';
 
 export default function SignIn() {
   const [email, setEmail] = useState('');

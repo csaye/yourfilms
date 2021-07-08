@@ -5,7 +5,7 @@ import LandingUI from '../components/LandingUI.js';
 import firebase from 'firebase/app';
 import getError from '../util/getError.js';
 
-import styles from '../styles/SignUp.module.css';
+import styles from '../styles/SignInUp.module.css';
 
 export default function SignUp() {
   const [name, setName] = useState('');
@@ -35,38 +35,48 @@ export default function SignUp() {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <LandingUI />
-      <h1>Sign Up</h1>
+      <h1 className={styles.title}>Sign Up</h1>
       <form onSubmit={e => {
         e.preventDefault();
         signUp();
       }}>
+        <label htmlFor="signup-name">Name</label>
         <input
+          id="signup-name"
           value={name}
           onChange={e => setName(e.target.value)}
           required
         />
+        <label htmlFor="signup-email">Email</label>
         <input
+          id="signup-email"
           type="email"
           value={email}
           onChange={e => setEmail(e.target.value)}
           autoComplete="username"
           required
         />
+        <label htmlFor="signup-password">Password</label>
         <input
+          id="signup-password"
           type="password"
           value={password}
           onChange={e => setPassword(e.target.value)}
           autoComplete="new-password"
           required
         />
-        <button>Sign Up</button>
+        <div className={styles.buttondiv}>
+          <button>Sign Up</button>
+        </div>
       </form>
-      <p>{error}</p>
-      <Link href="/signin">
-        <a>Have an account? Sign in</a>
-      </Link>
+      <p className={styles.error}>{error}</p>
+      <div className={styles.otherpage}>
+        <Link href="/signin">
+          <a>Have an account? Sign in</a>
+        </Link>
+      </div>
     </div>
   );
 }
