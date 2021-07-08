@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 
 import firebase from 'firebase/app';
+import getError from '../util/getError.js';
 
 import styles from '../styles/SignUp.module.css';
 
@@ -11,22 +12,20 @@ export default function SignUp() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
+  // attempts to create user with given credentials
   async function signUp() {
     setError('');
+    // try to create user
     try {
       await firebase.auth().createUserWithEmailAndPassword(email, password);
+    // if user sign up fails
     } catch (e) {
-      if (e.code === 'auth/invalid-email') {
-        setError('Invalid email address.');
-      } else if (e.code === 'auth/too-many-requests') {
-        setError('Too many requests. Please try again later.')
-      } else if (e.code === 'auth/weak-password') {
-        setError('Password must be at least 6 characters.')
-      } else {
-        setError(e.message);
-      }
+      // get and set error message
+      const message = getError(e);
+      setError(message);
       return;
     };
+    // create public user doc
     const uid = firebase.auth().currentUser.uid;
     await firebase.firestore().collection('users-public').doc(uid).set({
       name: name,
