@@ -26,6 +26,7 @@ function App({ Component, pageProps }) {
         <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
         <link rel="manifest" href="/favicons/site.webmanifest" />
       </Head>
+      <div className={styles.background} />
       <Component {...pageProps} />
     </>
   );
