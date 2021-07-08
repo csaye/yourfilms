@@ -1,5 +1,5 @@
-import Homepage from '../components/Homepage.js';
-import SignIn from '../components/SignIn.js';
+import Image from 'next/image';
+import Link from 'next/link';
 
 import firebase from 'firebase/app';
 
@@ -7,12 +7,20 @@ import styles from '../styles/Home.module.css';
 
 export default function Home() {
   return (
-    <>
-      {
-        firebase.auth().currentUser ?
-        <Homepage /> :
-        <SignIn />
-      }
-    </>
+    <div className={styles.container}>
+      <h1>MovieTalk</h1>
+      <Image
+        height="48"
+        width="48"
+        src="/img/logo.png"
+        alt="logo"
+      />
+      <Link href="/signin">
+        <a>Sign In</a>
+      </Link>
+      <Link href="/signup">
+        <a>Sign Up</a>
+      </Link>
+    </div>
   );
 }
