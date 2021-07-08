@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
+import LandingUI from '../components/LandingUI.js';
 
 import firebase from 'firebase/app';
 import getError from '../util/getError.js';
@@ -35,6 +36,7 @@ export default function SignUp() {
 
   return (
     <div>
+      <LandingUI />
       <h1>Sign Up</h1>
       <form onSubmit={e => {
         e.preventDefault();

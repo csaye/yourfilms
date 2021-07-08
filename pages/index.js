@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import LandingUI from '../components/LandingUI.js';
 
 import firebase from 'firebase/app';
 
@@ -8,6 +9,7 @@ import styles from '../styles/Home.module.css';
 export default function Home() {
   return (
     <div className={styles.container}>
+      <LandingUI />
       <div className={styles.title}>
         <h1>MovieTalk</h1>
         <Image
