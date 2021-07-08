@@ -1,4 +1,6 @@
 import Head from 'next/head';
+import Image from 'next/image';
+import Link from 'next/link';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
@@ -34,6 +36,35 @@ function App({ Component, pageProps }) {
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet" />
       </Head>
       <div className={styles.background} />
+      <div className={styles.lheader}>
+        <Link href="/">
+          <a>
+            <Image
+              height="48px"
+              width="48px"
+              src="/img/logo2.png"
+              alt="logo2"
+            />
+          </a>
+        </Link>
+      </div>
+      <div className={styles.rheader}>
+        <Link href="/signin">
+          <a>SIGN IN</a>
+        </Link>
+        <Link href="/signup">
+          <a>SIGN UP</a>
+        </Link>
+        <Link href="/movies">
+          <a>MOVIES</a>
+        </Link>
+        <Link href="/about">
+          <a>ABOUT</a>
+        </Link>
+        <Link href="/contact">
+          <a>CONTACT</a>
+        </Link>
+      </div>
       <Component {...pageProps} />
       <p className={styles.lfooter}>
         <a
