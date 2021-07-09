@@ -1,0 +1,24 @@
+.container {
+  background: var(--gray0);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 0;
+  color: #fff;
+}
+
+.lheader {
+  margin-left: 10px;
+}
+
+.rheader {
+  margin-right: 10px;
+}
+
+.rheader > a {
+  margin: 0 10px;
+}
+
+.rheader > a:hover {
+  color: var(--blue1);
+}
