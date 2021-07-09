@@ -4,7 +4,7 @@ import Link from 'next/link';
 export default function MoviePage(props) {
   return (
     <div>
-      <Link href="/">
+      <Link href="/movies">
         <a>Back</a>
       </Link>
       {
@@ -13,8 +13,8 @@ export default function MoviePage(props) {
           <h1>{props.data.original_title}</h1>
           <p>{props.data.overview}</p>
           <Image
-            height="600"
-            width="400"
+            height="600px"
+            width="400px"
             src={`http://image.tmdb.org/t/p/original${props.data.poster_path}`}
             alt=""
           />
