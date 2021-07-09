@@ -1,17 +1,25 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import Header from '../../components/Header.js';
+import Footer from '../../components/Footer.js';
+
+import styles from '../../styles/MoviePage.module.css';
 
 export default function MoviePage(props) {
   return (
-    <div>
+    <>
+      <Header />
       <Link href="/movies">
-        <a>Back</a>
+        <a>← Back</a>
       </Link>
       {
         props.ok ?
-        <div>
+        <div className={styles.content}>
           <h1>{props.data.original_title}</h1>
           <p>{props.data.overview}</p>
+          <p>Released {props.data.release_date}</p>
+          <p>{props.data.genres.map(g => g.name).join(', ')}</p>
+          <p>Runtime {props.data.runtime}m</p>
           <Image
             height="600px"
             width="400px"
@@ -21,7 +29,8 @@ export default function MoviePage(props) {
         </div> :
         <p>Movie not found</p>
       }
-    </div>
+      <Footer />
+    </>
   );
 }
 

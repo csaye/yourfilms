@@ -1,17 +1,22 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import Header from '../../components/Header.js';
+import Footer from '../../components/Footer.js';
 
 import firebase from 'firebase/app';
 
+import styles from '../../styles/UserPage.module.css';
+
 export default function UserPage(props) {
   return (
-    <div>
-      <Link href="/">
-        <a>Back</a>
+    <>
+      <Header />
+      <Link href="/users">
+        <a>← Back</a>
       </Link>
       {
         props.data ?
-        <div>
+        <div className={styles.content}>
           {
             props.data.id === firebase.auth().currentUser?.uid &&
             <i>your page</i>
@@ -21,7 +26,8 @@ export default function UserPage(props) {
         </div> :
         <p>User not found</p>
       }
-    </div>
+      <Footer />
+    </>
   );
 }
 
