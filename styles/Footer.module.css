@@ -1,0 +1,23 @@
+.container {
+  background: var(--gray0);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lfooter {
+  margin-left: 16px;
+}
+
+.lfooter > a:hover {
+  color: var(--blue1);
+}
+
+.lfooter > a:nth-child(2) {
+  margin: 0 5px;
+}
+
+.rfooter {
+  margin-right: 16px;
+}
