@@ -2,9 +2,23 @@
   margin: 10px;
   width: 200px;
   border-radius: 5px;
+  transition: 0.25s;
+}
+
+.container:hover {
+  transform: scale(1.02);
 }
 
 .container > a {
   width: 100%;
   display: inline-block;
+}
+
+.container > a > div:first-of-type {
+  box-shadow: 0 0 5px #333;
+  border-radius: 10px;
+}
+
+.description {
+  margin-bottom: 0;
 }

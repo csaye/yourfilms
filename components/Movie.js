@@ -4,7 +4,9 @@ import Image from 'next/image';
 import styles from '../styles/Movie.module.css';
 
 export default function Movie(props) {
-  const { id, original_title, popularity } = props.data;
+  const {
+    id, original_title, poster_path, release_date, vote_average
+  } = props.data;
 
   return (
     <div className={styles.container}>
@@ -13,10 +15,14 @@ export default function Movie(props) {
           <Image
             width="200px"
             height="300px"
-            src="https://via.placeholder.com/200x300"
+            src={`http://image.tmdb.org/t/p/original${poster_path}`}
+            alt=""
           />
-          <p>{original_title}</p>
-          <p>{popularity}★</p>
+          <p className={styles.description}>
+            <b>{original_title}</b> ({new Date(release_date).getFullYear()})
+            <br />
+            ★ {vote_average ? vote_average : 'NR'}
+          </p>
         </a>
       </Link>
     </div>
