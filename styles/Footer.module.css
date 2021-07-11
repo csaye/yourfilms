@@ -11,7 +11,7 @@
 }
 
 .lfooter > a:hover {
-  color: var(--blue1);
+  color: var(--blue0);
 }
 
 .lfooter > a:nth-child(2) {

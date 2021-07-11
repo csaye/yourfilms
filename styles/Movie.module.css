@@ -1,7 +1,9 @@
 .container {
   margin: 10px;
   width: 200px;
-  border-radius: 5px;
+  box-shadow: 0 0 5px #333;
+  border-radius: 10px;
+  overflow: hidden;
   transition: 0.25s;
 }
 
@@ -11,14 +13,11 @@
 
 .container > a {
   width: 100%;
+  height: 100%;
   display: inline-block;
 }
 
-.container > a > div:first-of-type {
-  box-shadow: 0 0 5px #333;
-  border-radius: 10px;
-}
-
 .description {
-  margin-bottom: 0;
+  margin: 0;
+  padding: 10px;
 }

@@ -1,3 +1,6 @@
 .content {
   text-align: center;
+  overflow: auto;
+  max-width: 800px;
+  margin: 0 auto;
 }
