@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import LandingUI from '../components/LandingUI.js';
 
+import { useRouter } from 'next/router';
 import firebase from 'firebase/app';
 import getError from '../util/getError.js';
 
@@ -12,6 +13,8 @@ export default function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+
+  const router = useRouter();
 
   // attempts to create user with given credentials
   async function signUp() {
@@ -32,6 +35,8 @@ export default function SignUp() {
       name: name,
       joined: new Date().getTime()
     });
+    // push movies page
+    router.push('/movies');
   }
 
   return (

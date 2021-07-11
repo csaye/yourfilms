@@ -25,15 +25,35 @@
   border-radius: 5px;
 }
 
-.links > a {
+.link {
   padding: 10px 20px;
   margin: 10px;
   border: 1px solid var(--blue1);
   display: inline-block;
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
+  position: relative;
+  transition: 0.3s;
 }
 
-.links > a:hover {
+.link:after {
+  position: absolute;
+  transition: 0.3s;
+  content: '';
+  width: 0;
+  bottom: 0;
+  height: 100%;
+  background: #fff;
+  right: 0;
+  left: auto;
+  z-index: -1;
+}
+
+.link:hover {
   color: var(--blue1);
+}
+
+.link:hover:after {
+  width: 100%;
+  left: 0;
 }

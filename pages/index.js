@@ -20,12 +20,12 @@ export default function Home() {
         />
       </div>
       <p>A social media based around movies.</p>
-      <div className={styles.links}>
+      <div>
         <Link href="/signin">
-          <a>SIGN IN</a>
+          <a className={styles.link}>SIGN IN</a>
         </Link>
         <Link href="/signup">
-          <a>SIGN UP</a>
+          <a className={styles.link}>SIGN UP</a>
         </Link>
       </div>
     </div>

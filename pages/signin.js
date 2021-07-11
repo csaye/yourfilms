@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import LandingUI from '../components/LandingUI.js';
 
+import { useRouter } from 'next/router';
 import firebase from 'firebase/app';
 import getError from '../util/getError.js';
 
@@ -11,6 +12,8 @@ export default function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+
+  const router = useRouter();
 
   // attempts to authenticate user with given credentials
   async function signIn() {
@@ -23,7 +26,10 @@ export default function SignIn() {
       // get and set error message
       const message = getError(e);
       setError(message);
+      return;
     }
+    // push movies page
+    router.push('/movies');
   }
 
   return (
