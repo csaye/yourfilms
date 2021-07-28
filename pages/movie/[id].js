@@ -41,6 +41,43 @@ export default function MoviePage(props) {
             src={`http://image.tmdb.org/t/p/original${props.data.poster_path}`}
             alt="poster"
           />
+          <h1>Watch</h1>
+          <div className={styles.watchdata}>
+            {
+              props.providers.results.US.rent &&
+              <>
+                <p>Rent</p>
+                {
+                  props.providers.results.US.rent.map(provider =>
+                    <div key={provider.provider_id}>
+                      {provider.provider_name}
+                    </div>
+                  )
+                }
+              </>
+            }
+            {
+              props.providers.results.US.buy &&
+              <>
+                <p>Buy</p>
+                {
+                  props.providers.results.US.buy.map(provider =>
+                    <div key={provider.provider_id}>
+                      {provider.provider_name}
+                    </div>
+                  )
+                }
+              </>
+            }
+            <a
+              className="styled"
+              href={props.providers.results.US.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              More Information
+            </a>
+          </div>
           <h1>Recommended</h1>
           <div className={styles.movielist}>
             {
@@ -74,17 +111,23 @@ export async function getStaticProps({ params }) {
   const data = await response.json();
   // if data ok, get recommendations
   let recs = undefined;
+  let providers = undefined;
   if (response.ok) {
     // retrieve recommended movies
     const recsUrl = `${baseUrl}/recommendations?api_key=${process.env.TMDB_KEY}`;
     const recsResponse = await fetch(recsUrl);
     recs = await recsResponse.json();
+    // retrieve watch providers
+    const provUrl = `${baseUrl}/watch/providers?api_key=${process.env.TMDB_KEY}`;
+    const provResponse = await fetch(provUrl);
+    providers = await provResponse.json();
   }
   // return data revalidating every hour
   return {
     props: {
       data: data,
       recs: recs,
+      providers: providers,
       ok: response.ok
     },
     revalidate: 3600
