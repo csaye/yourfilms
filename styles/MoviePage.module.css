@@ -20,7 +20,7 @@
   margin: 0 auto;
 }
 
-.genrelist {
+.cardlist {
   margin: 10px auto;
   max-width: 800px;
   display: flex;
@@ -28,7 +28,7 @@
   flex-wrap: wrap;
 }
 
-.genre {
+.card {
   background: #efefef;
   padding: 5px;
   margin: 5px;
@@ -40,4 +40,9 @@
   flex-wrap: wrap;
   justify-content: center;
   margin: 10px;
+}
+
+.watchdata > a {
+  display: inline-block;
+  margin-top: 1em;
 }

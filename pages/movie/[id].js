@@ -9,88 +9,98 @@ export default function MoviePage(props) {
   return (
     <>
       <Header />
-      {
-        props.ok ?
-        <div className={styles.content}>
-          <h1>{props.data.title}</h1>
-          <p className={styles.release}>
+        {
+          props.ok ?
+          <div className={styles.content}>
+            <h1>{props.data.title}</h1>
+            <p className={styles.release}>
+              {
+                props.data.release_date ?
+                <>
+                  Released{' '}
+                  {new Date(props.data.release_date).toLocaleDateString()}
+                </> :
+                <>Unreleased</>
+              }
+            </p>
+            <p className={styles.overview}>{props.data.overview}</p>
+            <div className={styles.cardlist}>
+              {
+                props.data.genres.map(g =>
+                  <div className={styles.card} key={g.id}>{g.name}</div>
+                )
+              }
+            </div>
             {
-              props.data.release_date ?
-              <>
-                Released{' '}
-                {new Date(props.data.release_date).toLocaleDateString()}
-              </> :
-              <>Unreleased</>
+              !!props.data.runtime &&
+              <p>Running time {props.data.runtime} minutes</p>
             }
-          </p>
-          <p className={styles.overview}>{props.data.overview}</p>
-          <div className={styles.genrelist}>
+            <Image
+              height="600px"
+              width="400px"
+              src={`http://image.tmdb.org/t/p/original${props.data.poster_path}`}
+              alt="poster"
+            />
+            <h1>Watch</h1>
             {
-              props.data.genres.map(g =>
-                <div className={styles.genre} key={g.id}>{g.name}</div>
-              )
-            }
-          </div>
-          {
-            !!props.data.runtime &&
-            <p>Running time {props.data.runtime} minutes</p>
-          }
-          <Image
-            height="600px"
-            width="400px"
-            src={`http://image.tmdb.org/t/p/original${props.data.poster_path}`}
-            alt="poster"
-          />
-          <h1>Watch</h1>
-          <div className={styles.watchdata}>
-            {
-              props.providers.results.US.rent &&
-              <>
-                <p>Rent</p>
+              props.providers.results.US ?
+              <div className={styles.watchdata}>
                 {
-                  props.providers.results.US.rent.map(provider =>
-                    <div key={provider.provider_id}>
-                      {provider.provider_name}
+                  props.providers.results.US.rent &&
+                  <>
+                    <p>Rent</p>
+                    <div className={styles.cardlist}>
+                      {
+                        props.providers.results.US.rent.map(provider =>
+                          <div className={styles.card} key={provider.provider_id}>
+                            {provider.provider_name}
+                          </div>
+                        )
+                      }
                     </div>
-                  )
+                  </>
                 }
-              </>
-            }
-            {
-              props.providers.results.US.buy &&
-              <>
-                <p>Buy</p>
                 {
-                  props.providers.results.US.buy.map(provider =>
-                    <div key={provider.provider_id}>
-                      {provider.provider_name}
-                    </div>
-                  )
+                  props.providers.results.US.buy &&
+                  <>
+                    <p><b>Buy</b></p>
+                    {
+                      <div className={styles.cardlist}>
+                        {
+                          props.providers.results.US.buy.map(provider =>
+                            <div className={styles.card} key={provider.provider_id}>
+                              {provider.provider_name}
+                            </div>
+                          )
+                        }
+                      </div>
+                    }
+                  </>
                 }
-              </>
+                <a
+                  className="styled"
+                  href={props.providers.results.US.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  More Information
+                </a>
+              </div> :
+              <p>No watch data found</p>
             }
-            <a
-              className="styled"
-              href={props.providers.results.US.link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              More Information
-            </a>
-          </div>
-          <h1>Recommended</h1>
-          <div className={styles.movielist}>
-            {
-              props.recs.results.length ?
-              props.recs.results.map(rec =>
-                <Movie data={rec} key={rec.id} />
-              ) :
-              <p>No recommendations found</p>
-            }
-          </div>
-        </div> :
-        <p>Movie not found</p>
-      }
+            <h1>Recommended</h1>
+            <div className={styles.movielist}>
+              {
+                props.recs.results.length ?
+                props.recs.results.map(rec =>
+                  <Movie data={rec} key={rec.id} />
+                ) :
+                <p>No recommendations found</p>
+              }
+            </div>
+          </div> :
+          <p>Movie not found</p>
+        }
       <Footer />
     </>
   );
@@ -109,7 +119,7 @@ export async function getStaticProps({ params }) {
   const url = `${baseUrl}?api_key=${process.env.TMDB_KEY}`;
   const response = await fetch(url);
   const data = await response.json();
-  // if data ok, get recommendations
+  // if data ok, get recommendations and providers
   let recs = undefined;
   let providers = undefined;
   if (response.ok) {
