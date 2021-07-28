@@ -9,7 +9,7 @@ import { movies } from '../data/movies.js';
 import styles from '../styles/Movies.module.css';
 
 export default function Movies() {
-  const [sortBy, setSortBy] = useState('');
+  const [sortBy, setSortBy] = useState('popularity');
 
   return (
     <>
@@ -19,7 +19,6 @@ export default function Movies() {
         <div className={styles.options}>
           Sort by{' '}
           <select value={sortBy} onChange={e => setSortBy(e.target.value)}>
-            <option value="">None</option>
             <option value="popularity">Popularity</option>
             <option value="release_date">Release Date</option>
             <option value="vote_average">Vote Average</option>
@@ -28,7 +27,26 @@ export default function Movies() {
         </div>
         <div className={styles.movielist}>
           {
-            movies.map(movie => <Movie key={movie.id} data={movie} />)
+            sortBy === 'popularity' &&
+            movies.sort((a, b) => b.popularity - a.popularity)
+            .map(movie => <Movie key={movie.id} data={movie} />)
+          }
+          {
+            sortBy === 'release_date' &&
+            movies.sort((a, b) =>
+              new Date(b.release_date) - new Date(a.release_date)
+            )
+            .map(movie => <Movie key={movie.id} data={movie} />)
+          }
+          {
+            sortBy === 'vote_average' &&
+            movies.sort((a, b) => b.vote_average - a.vote_average)
+            .map(movie => <Movie key={movie.id} data={movie} />)
+          }
+          {
+            sortBy === 'vote_count' &&
+            movies.sort((a, b) => b.vote_count - a.vote_count)
+            .map(movie => <Movie key={movie.id} data={movie} />)
           }
         </div>
       </div>
