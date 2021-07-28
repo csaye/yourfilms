@@ -5,6 +5,16 @@
   justify-content: space-around;
 }
 
+.content {
+  overflow: auto;
+  min-height: calc(100% - 120px);
+}
+
+.content > h1 {
+  text-align: center;
+  margin-bottom: 0;
+}
+
 .movielist {
   margin: 10px;
   display: flex;

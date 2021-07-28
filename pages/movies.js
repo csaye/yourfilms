@@ -9,14 +9,17 @@ import styles from '../styles/Movies.module.css';
 
 export default function Movies() {
   return (
-    <div className={styles.container}>
+    <>
       <Header />
-      <div className={styles.movielist}>
-        {
-          movies.map(movie => <Movie key={movie.id} data={movie} />)
-        }
+      <div className={styles.content}>
+        <h1>Movies</h1>
+        <div className={styles.movielist}>
+          {
+            movies.map(movie => <Movie key={movie.id} data={movie} />)
+          }
+        </div>
       </div>
       <Footer />
-    </div>
+    </>
   );
 }
