@@ -31,7 +31,7 @@ export default function Footer() {
         </a>
       </p>
       <p className={styles.rfooter}>
-        © MovieTalk {new Date().getFullYear()}.
+        © Yourfilms {new Date().getFullYear()}.
         Film data from{' '}
         <a
           className="styled"

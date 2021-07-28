@@ -19,7 +19,7 @@ function App({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>MovieTalk</title>
+        <title>Yourfilms</title>
         <meta name="description" content="A social media based around movies." />
         {/* icons */}
         <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />

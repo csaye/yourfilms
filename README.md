@@ -1,4 +1,4 @@
-# MovieTalk
+# Yourfilms
 
 A social media based around movies.
 

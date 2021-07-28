@@ -11,7 +11,7 @@ export default function Home() {
     <div className={styles.container}>
       <LandingUI />
       <div className={styles.title}>
-        <h1>MovieTalk</h1>
+        <h1>Yourfilms</h1>
         <Image
           height="48"
           width="48"
