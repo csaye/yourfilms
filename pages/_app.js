@@ -1,10 +1,10 @@
 import Head from 'next/head';
 
+import { useEffect, useState } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import { firebaseConfig } from '../firebaseConfig.js';
-import { useAuthState } from 'react-firebase-hooks/auth';
 
 import '../styles/globals.css';
 
@@ -14,7 +14,15 @@ if (!firebase.apps.length) {
 }
 
 function App({ Component, pageProps }) {
-  useAuthState(firebase.auth());
+  const [authed, setAuthed] = useState(undefined);
+
+  // listen for user auth
+  useEffect(() => {
+    const authListener = firebase.auth().onAuthStateChanged(() => {
+      setAuthed(!!firebase.auth().currentUser);
+    });
+    return () => authListener();
+  }, []);
 
   return (
     <>
@@ -29,7 +37,7 @@ function App({ Component, pageProps }) {
         {/* styling */}
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet" />
       </Head>
-      <Component {...pageProps} />
+      <Component authed={authed} {...pageProps} />
     </>
   );
 }

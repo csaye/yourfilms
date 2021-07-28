@@ -8,7 +8,7 @@ import getError from '../util/getError.js';
 
 import styles from '../styles/SignInUp.module.css';
 
-export default function SignUp() {
+export default function SignUp(props) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -38,6 +38,10 @@ export default function SignUp() {
     // push movies page
     router.push('/movies');
   }
+
+  // check auth state
+  if (props.authed === undefined) return <div>Loading...</div>;
+  if (props.authed === true) router.push('/movies');
 
   return (
     <div className={styles.container}>
