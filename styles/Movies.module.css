@@ -17,6 +17,23 @@
 
 .options {
   text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.genrelist {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 5px;
+}
+
+.genre {
+  margin: 5px;
+}
+
+.genre > label, .genre > input {
+  cursor: pointer;
 }
 
 .movielist {

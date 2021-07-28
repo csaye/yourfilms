@@ -31,26 +31,28 @@ export default function Movies(props) {
             <option value="vote_average">Vote Average</option>
             <option value="vote_count">Vote Count</option>
           </select>
-          {
-            genres.map(genre =>
-              <div key={genre.id}>
-                <label htmlFor={`genre-${genre.id}`}>{genre.name}</label>
-                <input
-                  id={`genre-${genre.id}`}
-                  type="checkbox"
-                  checked={chosenGenres.includes(genre.id)}
-                  onChange={e => {
-                    // update chosen genres
-                    const genreIndex = chosenGenres.indexOf(genre.id);
-                    const newGenres = chosenGenres.slice();
-                    if (genreIndex === -1) newGenres.push(genre.id);
-                    else newGenres.splice(genreIndex, 1);
-                    setChosenGenres(newGenres);
-                  }}
-                />
-              </div>
-            )
-          }
+          <div className={styles.genrelist}>
+            {
+              genres.map(genre =>
+                <div className={styles.genre} key={genre.id}>
+                  <label htmlFor={`genre-${genre.id}`}>{genre.name}</label>
+                  <input
+                    id={`genre-${genre.id}`}
+                    type="checkbox"
+                    checked={chosenGenres.includes(genre.id)}
+                    onChange={e => {
+                      // update chosen genres
+                      const genreIndex = chosenGenres.indexOf(genre.id);
+                      const newGenres = chosenGenres.slice();
+                      if (genreIndex === -1) newGenres.push(genre.id);
+                      else newGenres.splice(genreIndex, 1);
+                      setChosenGenres(newGenres);
+                    }}
+                  />
+                </div>
+              )
+            }
+          </div>
         </div>
         <div className={styles.movielist}>
           {
