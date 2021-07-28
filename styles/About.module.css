@@ -1,8 +1,14 @@
 .content {
   overflow: auto;
   min-height: calc(100% - 120px);
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .content > h1 {
   text-align: center;
+}
+
+.content > p {
+  line-height: 24px;
 }
