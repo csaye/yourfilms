@@ -6,3 +6,17 @@
 .content > h1 {
   text-align: center;
 }
+
+.iconlist {
+  display: flex;
+  justify-content: center;
+}
+
+.iconlist > a > svg {
+  width: 64px;
+  height: 64px;
+}
+
+.iconlist > a:hover {
+  color: var(--blue0);
+}
