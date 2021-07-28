@@ -12,7 +12,11 @@
 
 .content > h1 {
   text-align: center;
-  margin-bottom: 0;
+  margin-bottom: 10px;
+}
+
+.options {
+  text-align: center;
 }
 
 .movielist {
