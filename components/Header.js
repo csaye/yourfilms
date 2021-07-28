@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import firebase from 'firebase/app';
+
 import styles from '../styles/Header.module.css';
 
 export default function Header() {
@@ -19,12 +21,25 @@ export default function Header() {
         </Link>
       </div>
       <div className={styles.rheader}>
-        <Link href="/signin">
-          <a>SIGN IN</a>
-        </Link>
-        <Link href="/signup">
-          <a>SIGN UP</a>
-        </Link>
+        {
+          firebase.auth().currentUser ?
+          <>
+            <Link href={`/user/${firebase.auth().currentUser.uid}`}>
+              <a>PROFILE</a>
+            </Link>
+            <Link href="/recs">
+              <a>RECS</a>
+            </Link>
+          </> :
+          <>
+            <Link href="/signin">
+              <a>SIGN IN</a>
+            </Link>
+            <Link href="/signup">
+              <a>SIGN UP</a>
+            </Link>
+          </>
+        }
         <Link href="/movies">
           <a>MOVIES</a>
         </Link>
