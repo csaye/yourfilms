@@ -12,15 +12,25 @@ export default function MoviePage(props) {
         props.ok ?
         <div className={styles.content}>
           <h1>{props.data.original_title}</h1>
-          <p>{props.data.overview}</p>
-          <p>Released {props.data.release_date}</p>
-          <p>{props.data.genres.map(g => g.name).join(', ')}</p>
-          <p>Runtime {props.data.runtime}m</p>
+          <p className={styles.release}>
+            Released{' '}
+            {new Date(props.data.release_date).toLocaleDateString()}
+          </p>
+          <p className={styles.overview}>{props.data.overview}</p>
+          <div className={styles.genrelist}>
+            {
+              props.data.genres.map(g =>
+                <div className={styles.genre} key={g.id}>{g.name}</div>
+              )
+            }
+          </div>
+          <p>Running time {props.data.runtime} minutes</p>
           <Image
+            className={styles.image}
             height="600px"
             width="400px"
             src={`http://image.tmdb.org/t/p/original${props.data.poster_path}`}
-            alt=""
+            alt="poster"
           />
         </div> :
         <p>Movie not found</p>

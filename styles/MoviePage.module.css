@@ -4,3 +4,35 @@
   max-width: 800px;
   margin: 0 auto;
 }
+
+.content > h1 {
+  margin-bottom: 0;
+}
+
+.release {
+  margin-top: 0;
+  font-style: italic;
+  color: #999;
+}
+
+.overview {
+  line-height: 24px;
+}
+
+.genrelist {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.genre {
+  background: #efefef;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.image {
+  margin-bottom: 20px!important;
+}
