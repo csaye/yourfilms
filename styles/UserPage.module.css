@@ -1,3 +1,15 @@
 .content {
+  overflow: auto;
   text-align: center;
+  min-height: calc(100% - 120px);
+}
+
+.content > h1 {
+  margin-bottom: 0;
+}
+
+.joined {
+  color: #999;
+  margin-top: 0;
+  font-style: italic;
 }

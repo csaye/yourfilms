@@ -11,18 +11,13 @@ export default function UserPage(props) {
   return (
     <>
       <Header />
-      <Link href="/users">
-        <a>← Back</a>
-      </Link>
       {
         props.data ?
         <div className={styles.content}>
-          {
-            props.data.id === firebase.auth().currentUser?.uid &&
-            <i>your page</i>
-          }
           <h1>{props.data.name}</h1>
-          <p>Joined {new Date(props.data.joined).toLocaleString()}</p>
+          <p className={styles.joined}>
+            Joined {new Date(props.data.joined).toLocaleDateString()}
+          </p>
         </div> :
         <p>User not found</p>
       }
