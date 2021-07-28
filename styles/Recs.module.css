@@ -1,0 +1,9 @@
+.container {
+  height: 100%;
+}
+
+.content {
+  overflow: auto;
+  text-align: center;
+  min-height: calc(100% - 120px);
+}
