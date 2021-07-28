@@ -21,7 +21,6 @@
 
 .genrelist {
   display: flex;
-  align-items: center;
   justify-content: center;
   flex-wrap: wrap;
 }
@@ -31,4 +30,11 @@
   padding: 5px;
   margin: 5px;
   border-radius: 5px;
+}
+
+.movielist {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 10px;
 }

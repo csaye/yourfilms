@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Header from '../../components/Header.js';
 import Footer from '../../components/Footer.js';
+import Movie from '../../components/Movie.js';
 
 import styles from '../../styles/MoviePage.module.css';
 
@@ -32,12 +33,14 @@ export default function MoviePage(props) {
             alt="poster"
           />
           <h1>Recommended</h1>
-          {
-            props.recs &&
-            props.recs.results.map(rec =>
-              <p key={rec.id}>{rec.title}</p>
-            )
-          }
+          <div className={styles.movielist}>
+            {
+              props.recs &&
+              props.recs.results.map(rec =>
+                <Movie data={rec} key={rec.id} />
+              )
+            }
+          </div>
         </div> :
         <p>Movie not found</p>
       }
