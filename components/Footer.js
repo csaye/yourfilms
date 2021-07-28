@@ -34,12 +34,21 @@ export default function Footer() {
         © Yourfilms {new Date().getFullYear()}.
         Film data from{' '}
         <a
-          className="styled"
+          className="url"
           href="https://www.themoviedb.org"
           target="_blank"
           rel="noopener noreferrer"
         >
           TMDb
+        </a>
+        . Streaming data from{' '}
+        <a
+          className="url"
+          href="https://www.justwatch.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          JustWatch
         </a>
         .
       </p>

@@ -78,7 +78,7 @@ export default function MoviePage(props) {
                   </>
                 }
                 <a
-                  className="styled"
+                  className="url"
                   href={props.providers.results.US.link}
                   target="_blank"
                   rel="noopener noreferrer"

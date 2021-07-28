@@ -19,7 +19,13 @@ export default function Movie(props) {
             alt=""
           />
           <p className={styles.description}>
-            <b>{original_title}</b> ({new Date(release_date).getFullYear()})
+            <b>{original_title}</b>
+            {' '}
+            ({
+              release_date ?
+              new Date(release_date).getFullYear() :
+              'Unreleased'
+            })
             <br />
             ★ {vote_average ? vote_average : 'NR'}
           </p>
