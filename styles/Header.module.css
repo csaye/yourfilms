@@ -15,10 +15,18 @@
   margin-right: 10px;
 }
 
-.rheader > a {
+.rheader > a, .rheader > button {
   margin: 0 10px;
 }
 
-.rheader > a:hover {
+.rheader > a:hover, .rheader > button:hover {
   color: var(--blue0);
+}
+
+.rheader > button {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 16px;
+  padding: 0;
 }

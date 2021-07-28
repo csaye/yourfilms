@@ -22,21 +22,13 @@ export default function Header() {
       </div>
       <div className={styles.rheader}>
         {
-          firebase.auth().currentUser ?
+          firebase.auth().currentUser &&
           <>
             <Link href={`/user/${firebase.auth().currentUser.uid}`}>
               <a>PROFILE</a>
             </Link>
             <Link href="/recs">
               <a>RECS</a>
-            </Link>
-          </> :
-          <>
-            <Link href="/signin">
-              <a>SIGN IN</a>
-            </Link>
-            <Link href="/signup">
-              <a>SIGN UP</a>
             </Link>
           </>
         }
@@ -49,6 +41,20 @@ export default function Header() {
         <Link href="/contact">
           <a>CONTACT</a>
         </Link>
+        {
+          firebase.auth().currentUser ?
+          <button onClick={() => firebase.auth().signOut()}>
+            SIGN OUT
+          </button> :
+          <>
+          <Link href="/signup">
+            <a>SIGN UP</a>
+          </Link>
+            <Link href="/signin">
+              <a>SIGN IN</a>
+            </Link>
+          </>
+        }
       </div>
     </div>
   );
