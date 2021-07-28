@@ -14,8 +14,14 @@ export default function MoviePage(props) {
         <div className={styles.content}>
           <h1>{props.data.title}</h1>
           <p className={styles.release}>
-            Released{' '}
-            {new Date(props.data.release_date).toLocaleDateString()}
+            {
+              props.data.release_date ?
+              <>
+                Released{' '}
+                {new Date(props.data.release_date).toLocaleDateString()}
+              </> :
+              <>Unreleased</>
+            }
           </p>
           <p className={styles.overview}>{props.data.overview}</p>
           <div className={styles.genrelist}>
@@ -25,7 +31,10 @@ export default function MoviePage(props) {
               )
             }
           </div>
-          <p>Running time {props.data.runtime} minutes</p>
+          {
+            !!props.data.runtime &&
+            <p>Running time {props.data.runtime} minutes</p>
+          }
           <Image
             height="600px"
             width="400px"
@@ -35,10 +44,11 @@ export default function MoviePage(props) {
           <h1>Recommended</h1>
           <div className={styles.movielist}>
             {
-              props.recs &&
+              props.recs.results.length ?
               props.recs.results.map(rec =>
                 <Movie data={rec} key={rec.id} />
-              )
+              ) :
+              <p>No recommendations found</p>
             }
           </div>
         </div> :

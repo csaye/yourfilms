@@ -1,8 +1,6 @@
 .content {
   text-align: center;
   overflow: auto;
-  max-width: 800px;
-  margin: 0 auto;
 }
 
 .content > h1 {
@@ -17,9 +15,13 @@
 
 .overview {
   line-height: 24px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .genrelist {
+  margin: 10px auto;
+  max-width: 800px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
